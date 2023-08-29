@@ -28,15 +28,15 @@ use crate::Module;
 /// ```
 pub type ModuleFunction = fn(usize, usize, Module) -> String;
 
-#[cfg(target_arch = "wasm32")]
-use wasm_bindgen::prelude::*;
+// #[cfg(target_arch = "wasm32")]
+// use wasm_bindgen::prelude::*;
 
 // TODO: Find a way to use the same enum for wasm and not wasm
 // Current bug being that wasm_bindgen & #[cfg(not(target_arch = "wasm32"))] are not compatible(?)
 /// Different possible Shapes to represent modules in a QRCode
 #[cfg(target_arch = "wasm32")]
 #[repr(C)]
-#[wasm_bindgen]
+// #[wasm_bindgen]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Ord, PartialOrd)]
 pub enum Shape {
     /// Square Shape
@@ -187,7 +187,7 @@ impl Deref for Shape {
 }
 
 /// Different possible image background shapes
-#[cfg_attr(target_arch = "wasm32", repr(C), wasm_bindgen)]
+// #[cfg_attr(target_arch = "wasm32", repr(C), wasm_bindgen)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Ord, PartialOrd)]
 pub enum ImageBackgroundShape {
     /// Square shape

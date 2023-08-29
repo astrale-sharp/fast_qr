@@ -1,7 +1,7 @@
 #[cfg(feature = "svg")]
 use crate::convert;
 use crate::QRCode;
-use wasm_bindgen::prelude::*;
+// use wasm_bindgen::prelude::*;
 
 fn bool_to_u8(qr: QRCode) -> Vec<u8> {
     let dim = qr.size;
@@ -11,7 +11,7 @@ fn bool_to_u8(qr: QRCode) -> Vec<u8> {
         .collect()
 }
 
-#[wasm_bindgen]
+// #[wasm_bindgen]
 #[must_use]
 /// Generate a QR code from a string. All parameters are automatically set.
 pub fn qr(content: &str) -> Vec<u8> {
@@ -21,7 +21,7 @@ pub fn qr(content: &str) -> Vec<u8> {
 
 /// Configuration for the SVG output.
 #[cfg(feature = "svg")]
-#[wasm_bindgen]
+// #[wasm_bindgen]
 #[derive(Debug, Clone)]
 pub struct SvgOptions {
     shape: convert::Shape,
@@ -37,7 +37,7 @@ pub struct SvgOptions {
     image_position: Vec<f64>,
 }
 
-#[wasm_bindgen]
+// #[wasm_bindgen]
 #[cfg(feature = "svg")]
 impl SvgOptions {
     fn color_to_code(color: String) -> Vec<u8> {
@@ -141,10 +141,10 @@ impl SvgOptions {
     }
 }
 
-#[wasm_bindgen]
+// #[wasm_bindgen]
 #[cfg(feature = "svg")]
 impl SvgOptions {
-    #[wasm_bindgen(constructor)]
+    // #[wasm_bindgen(constructor)]
     /// Creates a new SvgOptions object.
     pub fn new() -> Self {
         Self {
@@ -163,7 +163,7 @@ impl SvgOptions {
     }
 }
 
-#[wasm_bindgen]
+// #[wasm_bindgen]
 #[cfg(feature = "svg")]
 /// Generate a QR code from a string. All parameters are automatically set.
 pub fn qr_svg(content: &str, options: SvgOptions) -> String {
